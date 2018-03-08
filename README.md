@@ -84,7 +84,7 @@ paint ./file.xx --embed > example.js
 </div>
 ```
 
-👉 [Example](https://demille.github.io/paint/after)
+👉 [Example](https://demille.github.io/paint/embed)
 
 
 ## Install
