@@ -9,8 +9,8 @@ paint ./file.xx --theme="oceanic next" > index.html
 paint replace --watch ./plain.html -o highlighted.html
 ```
 
-👉 [Output Demo](https://demille.github.io/paint)
-💾 [Precompiled Binaries](http://link)
+👉 [Output Demo](https://demille.github.io/paint)  
+💾 [Precompiled Binaries](https://github.com/DeMille/paint/releases/latest)
 
 Written in Rust, built with @trishume's fantastic [syntect](https://github.com/trishume/syntect) library.
 
@@ -88,7 +88,7 @@ paint ./file.xx --embed > example.js
 
 
 ## Install
-Grab precompiled binaries from the [latest release](...) or install from source:
+Grab precompiled binaries from the [latest release](https://github.com/DeMille/paint/releases/latest) or install from source:
 
 ```
 cargo install paint
