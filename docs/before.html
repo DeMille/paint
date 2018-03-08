@@ -1,0 +1,273 @@
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./examples.css">
+
+</head>
+    <body>
+        <div class="border-bottom">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <h1>
+                            <span class="command">
+                                <span class="hue-rotate">$</span> paint examples
+                            </span>
+                        </h1>
+                        <p class="subtitle">
+                            <a href="https://github.com/demille/paint">&larr; back to github</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row d-block d-lg-none d-xl-none border-bottom" style="margin-bottom: -20px">
+                <div class="col">
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./">
+                                Themes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./embed">
+                                Embed scripts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-muted">
+                                Replace &lt;pre&gt;'s
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col sidebar d-none d-lg-block">
+                    <div>
+                        <h6 style="font-variant: all-small-caps;">Examples:</h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="./">
+                                    Themes
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./embed">
+                                    Embed scripts
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-muted">
+                                    Replace &lt;pre&gt;'s
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <h3>Replacing &lt;pre&gt; blocks with highlighted syntax</h3>
+                    <p>
+                        The <code>replace</code> command finds &lt;pre&gt; blocks
+                        on an html page and replaces them with highlighted blocks.
+                        The command doesn't change to the source file; it outputs
+                        a copy of the document.
+                    </p>
+
+                    <div class="mt-4 mb-2">
+                        <span class="badge badge-warning">command</span>
+                        <div>
+                            <h5 class="command command-sm">
+                                paint replace ./before.html > after.html
+                            </h5>
+                        </div>
+                    </div>
+
+                    <p>
+                        Or use watch mode and highlighting will be updated every time
+                        you save the source file:
+                    </p>
+
+                    <div class="mb-2">
+                        <span class="badge badge-warning">command</span>
+                        <div>
+                            <h5 class="command command-sm">
+                                paint replace ./before.html --watch -o after.html
+                            </h5>
+                        </div>
+                    </div>
+
+                    <p>
+                        Each <code>&lt;pre&gt;</code> block needs a
+                        <nobr><code>data-paint="language"</code></nobr> attribute so paint knows
+                        what type of syntax to use. You can set options for all snippets on the
+                        cmd line, or apply settings individually for each snippet by setting
+                        data attributes. By default, CSS styles will be included in a style block
+                        above the syntax. You can change this behavior by breaking styles/content
+                        into two operations using some combination of
+                        <nobr><code>--html-only</code></nobr> /
+                        <nobr><code>--css-only</code></nobr> options or
+                        <nobr><code>data-html-only</code></nobr> /
+                        <nobr><code>data-css-inline</code></nobr> attributes.
+                    </p>
+                    <p>
+                        Check this page before and after syntax highlighting:
+                    </p>
+
+                    <br/>
+
+                    <ul class="nav nav-tabs mb-5">
+                        <li class="nav-item">
+                            <a class="nav-link active">Before</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./after">After</a>
+                        </li>
+                    </ul>
+
+                    <div class="row">
+                        <div class="col mb-5">
+                            <h6>Language type</h6>
+                            <p>
+                                Set with the <code>data-paint="xx"</code> attribute:
+                            </p>
+                            <div class='example-block mb-3 px-2 py-3'>
+                                <table>
+                                    <tr><td><span class='pt9'>&lt;pre</span> <span class='pt13'>data-paint=</span><span class='pt8'>&quot;rs&quot;</span><span class='pt9'>&gt;</span></span></td></tr>
+                                </table>
+                            </div>
+
+<div class="bordered">
+<pre data-paint="rs" data-css-inline>
+use std::io::{BufReader,BufRead};
+use std::fs::File;
+
+fn main() {
+    let file = File::open("file.txt").unwrap();
+
+    for line in BufReader::new(file).lines() {
+        println!("{}", line.unwrap());
+    }
+}</pre>
+</div>
+
+                        </div>
+
+                        <div class="col mb-5">
+                            <h6>--line-numbers</h6>
+                            <p>
+                                Add with the <code>data-line-numbers</code> attribute:
+                            </p>
+                            <div class='example-block mb-3 px-2 py-3'>
+                                <table>
+                                    <tr><td><span class='pt9'>&lt;pre</span> <span class='pt13'>data-paint=</span><span class='pt8'>&quot;py&quot;</span> <span class='pt13'>data-line-numbers</span><span class='pt9'>&gt;</span></td></tr>
+                                </table>
+                            </div>
+
+<div class="bordered">
+<pre data-paint="py" data-line-numbers>
+with open("foobar.txt") as f:
+    for line in f:
+        process(line)</pre>
+</div>
+
+                        </div>
+                    </div> <!-- row  -->
+
+
+
+                    <div class="row">
+                        <div class="col mb-5">
+                            <h6>--gist-like</h6>
+                            <p>
+                                Add line numbers and header with a <code>data-gist-like</code>
+                                attribute. Give it a title with <nobr><code>data-title="x"</code></nobr>
+                            </p>
+                            <div class='example-block mb-3 px-2 py-3'>
+                                <table>
+                                    <tr><td><span class='pt9'>&lt;pre</span> <span class='pt13'>data-paint=</span><span class='pt8'>&quot;c&quot;</span> <span class='pt13'>data-title=</span><span class='pt8'>&quot;read_file.c&quot;</span> <span class='pt13'>data-gist-like</span><span class='pt9'>&gt;</span></td></tr>
+                                </table>
+                            </div>
+
+<pre data-paint="c" data-title="read_file.c" data-gist-like class="bordered" style="padding: 15px;">
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+	FILE *stream;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
+
+	stream = fopen("file.txt", "r");
+	if (stream == NULL)
+		exit(EXIT_FAILURE);
+
+	while ((read = getline(&line, &len, stream)) != -1) {
+		printf("Retrieved line of length %zu :\n", read);
+		printf("%s", line);
+	}
+
+	free(line);
+	fclose(stream);
+	exit(EXIT_SUCCESS);
+}</pre>
+
+                    </div>
+
+                    <div class="col mb-5">
+                        <h6>--theme</h6>
+                        <p>
+                            Set with the <code>data-theme="xx"</code> attribute.
+                            If you have more than one theme on a page you'll need to use
+                            <nobr><code>data-css-prefix</code></nobr> or
+                            <nobr><code>data-css-inline</code></nobr> to prevent themes
+                            from clobbering each other.
+                        </p>
+                        <div class='example-block mb-3 px-2 py-3'>
+                            <table>
+                                <tr><td><span class='pt9'>&lt;pre</span> <span class='pt13'>data-paint=</span><span class='pt8'>&quot;go&quot;</span> <span class='pt13'>data-theme=</span><span class='pt8'>&quot;dracula&quot;</span> <span class='pt13'>data-css-prefix=</span><span class='pt8'>&quot;dark_example&quot;</span><span class='pt9'>&gt;</span></td></tr>
+                            </table>
+                        </div>
+
+<div style="border-radius: 3px; overflow: hidden;">
+<pre data-paint="go" data-theme="dracula" data-css-prefix="dark_example" class="bordered" style="padding: 15px;">
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
+
+func main() {
+	inputFile, _ := os.Open("byline.go")
+	defer inputFile.Close()
+
+	scanner := bufio.NewScanner(inputFile)
+
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
+}</pre>
+</div>
+
+
+                    </div>
+                </div> <!-- row  -->
+
+            </div> <!-- main content -->
+
+        </div>
+    </div>
+
+</body>
+</html>

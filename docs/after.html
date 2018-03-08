@@ -1,0 +1,540 @@
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./examples.css">
+
+</head>
+    <body>
+        <div class="border-bottom">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <h1>
+                            <span class="command">
+                                <span class="hue-rotate">$</span> paint examples
+                            </span>
+                        </h1>
+                        <p class="subtitle">
+                            <a href="https://github.com/demille/paint">&larr; back to github</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row d-block d-lg-none d-xl-none border-bottom" style="margin-bottom: -20px">
+                <div class="col">
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./">
+                                Themes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./embed">
+                                Embed scripts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-muted">
+                                Replace &lt;pre&gt;'s
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col sidebar d-none d-lg-block">
+                    <div>
+                        <h6 style="font-variant: all-small-caps;">Examples:</h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="./">
+                                    Themes
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./embed">
+                                    Embed scripts
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-muted">
+                                    Replace &lt;pre&gt;'s
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <h3>Replacing &lt;pre&gt; blocks with highlighted syntax</h3>
+                    <p>
+                        The <code>replace</code> command finds &lt;pre&gt; blocks
+                        on an html page and replaces them with highlighted blocks.
+                        The command doesn't change to the source file; it outputs
+                        a copy of the document.
+                    </p>
+
+                    <div class="mt-4 mb-2">
+                        <span class="badge badge-warning">command</span>
+                        <div>
+                            <h5 class="command command-sm">
+                                paint replace ./before.html > after.html
+                            </h5>
+                        </div>
+                    </div>
+
+                    <p>
+                        Or use watch mode and highlighting will be updated every time
+                        you save the source file:
+                    </p>
+
+                    <div class="mb-2">
+                        <span class="badge badge-warning">command</span>
+                        <div>
+                            <h5 class="command command-sm">
+                                paint replace ./before.html --watch -o after.html
+                            </h5>
+                        </div>
+                    </div>
+
+                    <p>
+                        Each <code>&lt;pre&gt;</code> block needs a
+                        <nobr><code>data-paint="language"</code></nobr> attribute so paint knows
+                        what type of syntax to use. You can set options for all snippets on the
+                        cmd line, or apply settings individually for each snippet by setting
+                        data attributes. By default, CSS styles will be included in a style block
+                        above the syntax. You can change this behavior by breaking styles/content
+                        into two operations using some combination of
+                        <nobr><code>--html-only</code></nobr> /
+                        <nobr><code>--css-only</code></nobr> options or
+                        <nobr><code>data-html-only</code></nobr> /
+                        <nobr><code>data-css-inline</code></nobr> attributes.
+                    </p>
+                    <p>
+                        Check this page before and after syntax highlighting:
+                    </p>
+
+                    <br/>
+
+                    <ul class="nav nav-tabs mb-5">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./before">Before</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active">After</a>
+                        </li>
+                    </ul>
+
+                    <div class="row">
+                        <div class="col mb-5">
+                            <h6>Language type</h6>
+                            <p>
+                                Set with the <code>data-paint="xx"</code> attribute:
+                            </p>
+                            <div class='example-block mb-3 px-2 py-3'>
+                                <table>
+                                    <tr><td><span class='pt9'>&lt;pre</span> <span class='pt13'>data-paint=</span><span class='pt8'>&quot;rs&quot;</span><span class='pt9'>&gt;</span></span></td></tr>
+                                </table>
+                            </div>
+
+<div class="bordered">
+<div style='display: block;
+    width: 100%;
+    padding: 10px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    color: #24292e;
+    background-color: #ffffff;'>
+<table style='width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12px;
+    line-height: 20px;
+    tab-size: 4;
+    color: inherit;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+'>
+<tr><td style='padding: 0 13px; white-space: pre;'><span style='color: #d73a49;'>use</span> std<span style='color: #d73a49;'>::</span>io<span style='color: #d73a49;'>::</span>{BufReader,BufRead};</td></tr>
+<tr><td style='padding: 0 13px; white-space: pre;'><span style='color: #d73a49;'>use</span> std<span style='color: #d73a49;'>::</span>fs<span style='color: #d73a49;'>::</span>File;</td></tr>
+<tr><td style='padding: 0 13px; white-space: pre;'>&#10;</td></tr>
+<tr><td style='padding: 0 13px; white-space: pre;'><span style='color: #d73a49;'>fn</span> <span style='color: #6f42c1;'>main</span>() {</td></tr>
+<tr><td style='padding: 0 13px; white-space: pre;'>    <span style='color: #d73a49;'>let</span> file <span style='color: #d73a49;'>=</span> File<span style='color: #d73a49;'>::</span><span style='color: #6f42c1;'>open</span>(<span style='color: #032f62;'>&quot;file.txt&quot;</span>).<span style='color: #6f42c1;'>unwrap</span>();</td></tr>
+<tr><td style='padding: 0 13px; white-space: pre;'>&#10;</td></tr>
+<tr><td style='padding: 0 13px; white-space: pre;'>    <span style='color: #d73a49;'>for</span> line <span style='color: #d73a49;'>in</span> BufReader<span style='color: #d73a49;'>::</span><span style='color: #6f42c1;'>new</span>(file).<span style='color: #6f42c1;'>lines</span>() {</td></tr>
+<tr><td style='padding: 0 13px; white-space: pre;'>        <span style='color: #005cc5;'>println!</span>(<span style='color: #032f62;'>&quot;</span><span style='color: #005cc5;'>{}</span><span style='color: #032f62;'>&quot;</span>, line.<span style='color: #6f42c1;'>unwrap</span>());</td></tr>
+<tr><td style='padding: 0 13px; white-space: pre;'>    }</td></tr>
+<tr><td style='padding: 0 13px; white-space: pre;'>}</td></tr>
+</table>
+</div>
+
+</div>
+
+                        </div>
+
+                        <div class="col mb-5">
+                            <h6>--line-numbers</h6>
+                            <p>
+                                Add with the <code>data-line-numbers</code> attribute:
+                            </p>
+                            <div class='example-block mb-3 px-2 py-3'>
+                                <table>
+                                    <tr><td><span class='pt9'>&lt;pre</span> <span class='pt13'>data-paint=</span><span class='pt8'>&quot;py&quot;</span> <span class='pt13'>data-line-numbers</span><span class='pt9'>&gt;</span></td></tr>
+                                </table>
+                            </div>
+
+<div class="bordered">
+<style scoped>
+.paint {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    color: #24292e;
+    background-color: #ffffff;
+}
+.paint table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12px;
+    line-height: 20px;
+    tab-size: 4;
+    color: inherit;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+
+}
+.paint td {
+    padding: 0 10px; white-space: pre;
+}
+.paint .ln {
+    width: 1px;
+    min-width: 25px;
+    box-sizing: content-box;
+    text-align: right;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #bebfbf;
+}
+.paint .ln::after {
+    content: attr(data-ln);
+}
+.paint .hi {
+    background-color: #fffbdd;
+}
+.paint .un { text-decoration: underline; }
+.paint .bo { font-weight: bold; }
+.paint .it { font-style: italic; }
+        .paint .pt2 { background: #b31d28; }
+.paint .pt20 { color: #fafbfc; }
+.paint .pt19 { color: #f6f8fa; }
+.paint .pt4 { background: #f0fff4; }
+.paint .pt1 { background: #005cc5; }
+.paint .pt18 { color: #e36209; }
+.paint .pt6 { background: #ffeef0; }
+.paint .pt16 { color: #b31d28; }
+.paint .pt3 { background: #d73a49; }
+.paint .pt5 { background: #ffebda; }
+.paint .pt13 { color: #6f42c1; }
+.paint .pt7 { color: #005cc5; }
+.paint .pt14 { color: #735c0f; }
+.paint .pt10 { color: #242930; }
+.paint .pt9 { color: #22863a; }
+.paint .pt12 { color: #6a737d; }
+.paint .pt17 { color: #d73a49; }
+.paint .pt11 { color: #586069; }
+.paint .pt8 { color: #032f62; }
+.paint .pt15 { color: #959da5; }
+</style>
+<div class='paint'>
+<table>
+<tr><td class='ln' data-ln='1'></td><td><span class='pt17'>with</span> <span class='pt7'>open</span>(<span class='pt8'>&quot;foobar.txt&quot;</span>) <span class='pt17'>as</span> f:</td></tr>
+<tr><td class='ln' data-ln='2'></td><td>    <span class='pt17'>for</span> line <span class='pt17'>in</span> f:</td></tr>
+<tr><td class='ln' data-ln='3'></td><td>        <span class='pt13'>process</span>(line)</td></tr>
+</table>
+</div>
+
+</div>
+
+                        </div>
+                    </div> <!-- row  -->
+
+
+
+                    <div class="row">
+                        <div class="col mb-5">
+                            <h6>--gist-like</h6>
+                            <p>
+                                Add line numbers and header with a <code>data-gist-like</code>
+                                attribute. Give it a title with <nobr><code>data-title="x"</code></nobr>
+                            </p>
+                            <div class='example-block mb-3 px-2 py-3'>
+                                <table>
+                                    <tr><td><span class='pt9'>&lt;pre</span> <span class='pt13'>data-paint=</span><span class='pt8'>&quot;c&quot;</span> <span class='pt13'>data-title=</span><span class='pt8'>&quot;read_file.c&quot;</span> <span class='pt13'>data-gist-like</span><span class='pt9'>&gt;</span></td></tr>
+                                </table>
+                            </div>
+
+<style scoped>.paint-bordered {
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+}
+.paint-bordered .info {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(36, 41, 46, 0.7490196);
+    background: #f9f9f9;
+    margin: 0;
+    padding: 10px 15px 10px;
+    font-size: 12px;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    line-height: 1.2;
+}
+.paint-bordered .info.header {
+    border-bottom: 1px solid #dddddd;
+}
+.paint-bordered .info.footer {
+    border-top: 1px solid #dddddd;
+}
+.paint-bordered .info .left {
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.paint-bordered .info .right span:not(:last-child) {
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 1px solid rgba(36, 41, 46, 0.101960786);
+}
+
+.paint {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    color: #24292e;
+    background-color: #ffffff;
+}
+.paint table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12px;
+    line-height: 20px;
+    tab-size: 4;
+    color: inherit;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+
+}
+.paint td {
+    padding: 0 10px; white-space: pre;
+}
+.paint .ln {
+    width: 1px;
+    min-width: 25px;
+    box-sizing: content-box;
+    text-align: right;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #bebfbf;
+}
+.paint .ln::after {
+    content: attr(data-ln);
+}
+.paint .hi {
+    background-color: #fffbdd;
+}
+.paint .un { text-decoration: underline; }
+.paint .bo { font-weight: bold; }
+.paint .it { font-style: italic; }
+        .paint .pt4 { background: #f0fff4; }
+.paint .pt14 { color: #735c0f; }
+.paint .pt9 { color: #22863a; }
+.paint .pt3 { background: #d73a49; }
+.paint .pt8 { color: #032f62; }
+.paint .pt15 { color: #959da5; }
+.paint .pt12 { color: #6a737d; }
+.paint .pt13 { color: #6f42c1; }
+.paint .pt6 { background: #ffeef0; }
+.paint .pt1 { background: #005cc5; }
+.paint .pt2 { background: #b31d28; }
+.paint .pt10 { color: #242930; }
+.paint .pt19 { color: #f6f8fa; }
+.paint .pt18 { color: #e36209; }
+.paint .pt20 { color: #fafbfc; }
+.paint .pt16 { color: #b31d28; }
+.paint .pt7 { color: #005cc5; }
+.paint .pt5 { background: #ffebda; }
+.paint .pt17 { color: #d73a49; }
+.paint .pt11 { color: #586069; }
+</style>
+<div class='paint-bordered'>
+        <div class="info header">
+            <span class="left">read_file.c</span>
+            <span class="right"></span>
+        </div>
+    <div class='paint'>
+<table>
+<tr><td class='ln' data-ln='1'></td><td><span class='pt17'>#include</span> <span class='pt8'>&lt;stdio.h&gt;</span></td></tr>
+<tr><td class='ln' data-ln='2'></td><td><span class='pt17'>#include</span> <span class='pt8'>&lt;stdlib.h&gt;</span></td></tr>
+<tr><td class='ln' data-ln='3'></td><td>&#10;</td></tr>
+<tr><td class='ln' data-ln='4'></td><td><span class='pt17'>int</span> <span class='pt13'>main</span>(<span class='pt17'>void</span>)</td></tr>
+<tr><td class='ln' data-ln='5'></td><td>{</td></tr>
+<tr><td class='ln' data-ln='6'></td><td>	FILE <span class='pt17'>*</span>stream;</td></tr>
+<tr><td class='ln' data-ln='7'></td><td>	<span class='pt17'>char</span> <span class='pt17'>*</span>line <span class='pt17'>=</span> <span class='pt7'>NULL</span>;</td></tr>
+<tr><td class='ln' data-ln='8'></td><td>	<span class='pt17'>size_t</span> len <span class='pt17'>=</span> <span class='pt7'>0</span>;</td></tr>
+<tr><td class='ln' data-ln='9'></td><td>	<span class='pt17'>ssize_t</span> read;</td></tr>
+<tr><td class='ln' data-ln='10'></td><td>&#10;</td></tr>
+<tr><td class='ln' data-ln='11'></td><td>	stream <span class='pt17'>=</span> <span class='pt13'>fopen</span>(<span class='pt8'>&quot;file.txt&quot;</span>, <span class='pt8'>&quot;r&quot;</span>);</td></tr>
+<tr><td class='ln' data-ln='12'></td><td>	<span class='pt17'>if</span> (stream <span class='pt17'>==</span> <span class='pt7'>NULL</span>)</td></tr>
+<tr><td class='ln' data-ln='13'></td><td>		<span class='pt13'>exit</span>(EXIT_FAILURE);</td></tr>
+<tr><td class='ln' data-ln='14'></td><td>&#10;</td></tr>
+<tr><td class='ln' data-ln='15'></td><td>	<span class='pt17'>while</span> ((read <span class='pt17'>=</span> <span class='pt13'>getline</span>(<span class='pt17'>&amp;</span>line, <span class='pt17'>&amp;</span>len, stream)) <span class='pt17'>!=</span> <span class='pt17'>-</span><span class='pt7'>1</span>) {</td></tr>
+<tr><td class='ln' data-ln='16'></td><td>		<span class='pt13'>printf</span>(<span class='pt8'>&quot;Retrieved line of length </span><span class='pt7'>%zu</span><span class='pt8'> :</span><span class='pt7'>\n</span><span class='pt8'>&quot;</span>, read);</td></tr>
+<tr><td class='ln' data-ln='17'></td><td>		<span class='pt13'>printf</span>(<span class='pt8'>&quot;</span><span class='pt7'>%s</span><span class='pt8'>&quot;</span>, line);</td></tr>
+<tr><td class='ln' data-ln='18'></td><td>	}</td></tr>
+<tr><td class='ln' data-ln='19'></td><td>&#10;</td></tr>
+<tr><td class='ln' data-ln='20'></td><td>	<span class='pt13'>free</span>(line);</td></tr>
+<tr><td class='ln' data-ln='21'></td><td>	<span class='pt13'>fclose</span>(stream);</td></tr>
+<tr><td class='ln' data-ln='22'></td><td>	<span class='pt13'>exit</span>(EXIT_SUCCESS);</td></tr>
+<tr><td class='ln' data-ln='23'></td><td>}</td></tr>
+</table>
+</div>
+</div>
+
+                    </div>
+
+                    <div class="col mb-5">
+                        <h6>--theme</h6>
+                        <p>
+                            Set with the <code>data-theme="xx"</code> attribute.
+                            If you have more than one theme on a page you'll need to use
+                            <nobr><code>data-css-prefix</code></nobr> or
+                            <nobr><code>data-css-inline</code></nobr> to prevent themes
+                            from clobbering each other.
+                        </p>
+                        <div class='example-block mb-3 px-2 py-3'>
+                            <table>
+                                <tr><td><span class='pt9'>&lt;pre</span> <span class='pt13'>data-paint=</span><span class='pt8'>&quot;go&quot;</span> <span class='pt13'>data-theme=</span><span class='pt8'>&quot;dracula&quot;</span> <span class='pt13'>data-css-prefix=</span><span class='pt8'>&quot;dark_example&quot;</span><span class='pt9'>&gt;</span></td></tr>
+                            </table>
+                        </div>
+
+<div style="border-radius: 3px; overflow: hidden;">
+<style scoped>
+.dark_example {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    color: #f8f8f2;
+    background-color: #282a36;
+}
+.dark_example table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12px;
+    line-height: 20px;
+    tab-size: 4;
+    color: inherit;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+
+}
+.dark_example td {
+    padding: 0 13px; white-space: pre;
+}
+.dark_example .ln {
+    width: 1px;
+    min-width: 25px;
+    box-sizing: content-box;
+    text-align: right;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: rgba(248, 248, 242, 0.2509804);
+}
+.dark_example .ln::after {
+    content: attr(data-ln);
+}
+.dark_example .hi {
+    background-color: #363949;
+}
+.dark_example .un { text-decoration: underline; }
+.dark_example .bo { font-weight: bold; }
+.dark_example .it { font-style: italic; }
+        .dark_example .pt10 { color: #ffb86c; }
+.dark_example .pt3 { color: #8be9fd; }
+.dark_example .pt9 { color: #ff79c6; }
+.dark_example .pt4 { color: #8be9fe; }
+.dark_example .pt6 { color: #e9f284; }
+.dark_example .pt1 { color: #50fa7b; }
+.dark_example .pt8 { color: #ff5555; }
+.dark_example .pt7 { color: #f1fa8c; }
+.dark_example .pt5 { color: #bd93f9; }
+.dark_example .pt2 { color: #6272a4; }
+</style>
+<div class='dark_example'>
+<table>
+<tr><td><span class='pt9'>package</span> main</td></tr>
+<tr><td>&#10;</td></tr>
+<tr><td><span class='pt9'>import</span> (</td></tr>
+<tr><td>	<span class='pt6'>&quot;</span><span class='pt7'>bufio</span><span class='pt6'>&quot;</span></td></tr>
+<tr><td>	<span class='pt6'>&quot;</span><span class='pt7'>fmt</span><span class='pt6'>&quot;</span></td></tr>
+<tr><td>	<span class='pt6'>&quot;</span><span class='pt7'>os</span><span class='pt6'>&quot;</span></td></tr>
+<tr><td>)</td></tr>
+<tr><td>&#10;</td></tr>
+<tr><td><span class='pt9'>func</span> <span class='pt1'>main</span>() {</td></tr>
+<tr><td>	inputFile, _ <span class='pt9'>:=</span> os.<span class='pt3'>Open</span>(<span class='pt6'>&quot;</span><span class='pt7'>byline.go</span><span class='pt6'>&quot;</span>)</td></tr>
+<tr><td>	<span class='pt9'>defer</span> inputFile.<span class='pt3'>Close</span>()</td></tr>
+<tr><td>&#10;</td></tr>
+<tr><td>	scanner <span class='pt9'>:=</span> bufio.<span class='pt3'>NewScanner</span>(inputFile)</td></tr>
+<tr><td>&#10;</td></tr>
+<tr><td>	<span class='pt9'>for</span> scanner.<span class='pt3'>Scan</span>() {</td></tr>
+<tr><td>		fmt.<span class='pt3'>Println</span>(scanner.<span class='pt3'>Text</span>())</td></tr>
+<tr><td>	}</td></tr>
+<tr><td>}</td></tr>
+</table>
+</div>
+
+</div>
+
+
+                    </div>
+                </div> <!-- row  -->
+
+            </div> <!-- main content -->
+
+        </div>
+    </div>
+
+</body>
+</html>
+

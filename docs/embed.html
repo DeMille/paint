@@ -1,0 +1,138 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./examples.css">
+</head>
+<body>
+    <div class="border-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <h1>
+                        <span class="command">
+                            <span class="hue-rotate">$</span> paint examples
+                        </span>
+                    </h1>
+                    <p class="subtitle">
+                        <a href="https://github.com/demille/paint">&larr; back to github</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row d-block d-lg-none d-xl-none border-bottom" style="margin-bottom: -20px">
+            <div class="col">
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./">
+                            Themes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted">
+                            Embed scripts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./before">
+                            Replace &lt;pre&gt;'s
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col sidebar d-none d-lg-block">
+                <div>
+                    <h6 style="font-variant: all-small-caps;">Examples:</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./">
+                                Themes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-muted">
+                                Embed scripts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./before">
+                                Replace &lt;pre&gt;'s
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col mb-5">
+                <h3>Embed Scripts</h3>
+                <p>
+                    The
+                    <code>--embed</code> option spits out a js file instead of html.
+                    <br/> Serve the js like any other static asset and embed it in pages
+                    like you would a github gist.
+                </p>
+
+                <div class="mt-4 mb-2">
+                    <span class="badge badge-warning">command</span>
+                    <div>
+                        <h5 class="command command-sm">
+                            paint allocate.rs --embed -nb > example.js
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <span class="badge badge-warning">allocate.rs</span>
+                    <div class="bordered">
+<pre>
+/// A hacky way to allocate/deallocate in rust stable (`alloc::heap` is still unstable)
+/// rust-lang/rfcs#1974
+/// https://github.com/rust-lang/rust/issues/27389
+///
+pub fn allocate(length: usize) -> *mut c_void {
+    let mut v = Vec::with_capacity(length);
+    let ptr = v.as_mut_ptr();
+    std::mem::forget(v);
+    ptr
+}
+
+fn deallocate(ptr: *mut c_void, length: usize) {
+    std::mem::drop(Vec::from_raw_parts(ptr, 0, length));
+}</pre>
+                    </div>
+                </div>
+
+                <p>
+                    Include the script anywhere on a page and it'll render the snippet
+                    on page load:
+                </p>
+
+                    <span class="badge badge-warning">usage</span>
+                    <div class='example-block mb-4 px-2 py-3'>
+                        <table>
+                        <tr><td><span class='pt9'>&lt;p&gt;</span>This was loaded from a script<span class='pt9'>&lt;/p&gt;</span></td></tr>
+                        <tr><td><span class='pt9'>&lt;div</span> <span class='pt13'>class=</span><span class='pt8'>&quot;</span><span class='pt17'>embedded</span><span class='pt8'>&quot;</span><span class='pt9'>&gt;</span></td></tr>
+                        <tr><td>    <span class='pt9'>&lt;script</span> <span class='pt13'>src=</span><span class='pt8'>&quot;./example.js&quot;</span><span class='pt9'>&gt;&lt;/script&gt;</span></td></tr>
+                        <tr><td><span class='pt9'>&lt;/div&gt;</span></td></tr>
+                        </table>
+                    </div>
+
+                    <p>This was loaded from a script 👇</p>
+                    <div class="embedded">
+                        <script src="./example.js"></script>
+                    </div>
+
+                </div> <!-- main content -->
+
+            </div>
+        </div>
+
+    </body>
+</html>
