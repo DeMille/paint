@@ -152,7 +152,7 @@ fn parse_selection(lines: Option<&str>) -> Option<(usize, usize)> {
         Some(s) => {
             let ns = s.split('-').map(|n| n.parse().unwrap()).collect::<Vec<_>>();
             let start = ns.get(0).expect("Problem parsing selection number");
-            let end = ns.get(1).unwrap_or(&start);
+            let end = ns.get(1).unwrap_or(start);
 
             Some((*start,  *end))
         }
